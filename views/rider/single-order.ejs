@@ -1,0 +1,40 @@
+<section class="status m-auto">
+  <div>
+    <div class="status-box">
+      <div class="d-sm-flex justify-content-between align-items-center mb-5">
+        <h1 class="order-status text-center">Track Delivery Status</h1>
+        <h6 class="py-1 text-center px-2"><%= order._id%></h6>
+        <input
+          id="hiddenInput"
+          type="hidden"
+          value="<%= JSON.stringify(order)%>"
+        />
+      </div>
+      <ul>
+        <!-- step completed and current -->
+        <li class="status_line fs-5 pb-5 current" data-status="Confirmed">
+          <span>Order Placed</span>
+        </li>
+        <li class="status_line fs-5 pb-5" data-status="Payment Done">
+          <span>Payment Done</span>
+        </li>
+        <li class="status_line fs-5 pb-5" data-status="Vehicle On The Way">
+          <span>Vehicle on the Way</span>
+        </li>
+        <li class="status_line fs-5 pb-5" data-status="Vehicle Delivered">
+          <span>Vehicle Delivered</span>
+        </li>
+        <li class="status_line fs-5" data-status="Completed">
+          <span>Vehicle Returned</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  let socket = io();
+</script>
+
+<script src="/js/app.js"></script>
