@@ -32,7 +32,6 @@ const moment = require("moment");
 
 const app = express();
 const publicDir = path.join(__dirname, "/public");
-app.use(path.join(__dirname,"/views"));
 app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended: true })); // So we can access the form input values
 app.use(express.json());
@@ -40,6 +39,8 @@ app.use(express.json());
 app.use(expressLayouts);
 app.set("layout", "./pages/layout.ejs");
 app.set("view engine", "ejs");
+app.set('views',path.join(__dirname,'/views'));
+
 
 mongoose
   .connect('mongodb+srv://mathurharsh1:Mathurharsh1@cluster0.0jdvtts.mongodb.net/?retryWrites=true&w=majority', {
