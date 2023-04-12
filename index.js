@@ -41,7 +41,7 @@ app.set("layout", "./pages/layout.ejs");
 app.set("view engine", "ejs");
 
 mongoose
-  .connect(process.env.MONGO_CONNECTION_URL, {
+  .connect('mongodb+srv://mathurharsh1:Mathurharsh1@cluster0.0jdvtts.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -50,7 +50,7 @@ mongoose
   .catch((err) => console.log(err + "error"));
 
 const store = new MongoDbSession({
-  uri:process.env.MONGO_CONNECTION_URL,
+  uri:'mongodb+srv://mathurharsh1:Mathurharsh1@cluster0.0jdvtts.mongodb.net/?retryWrites=true&w=majority',
   collection: "authSession",
 });
 
@@ -60,7 +60,7 @@ app.set("eventEmitter", eventEmitter);
 
 app.use(
   session({
-    secret:process.env.COOKIE_SECRET,
+    secret:'this is my secret',
     resave: false,
     saveUninitialized: false,
     store: store,
