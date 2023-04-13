@@ -1,5 +1,4 @@
 require("dotenv").config(); // This will inject .env variable into this file
-
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 
