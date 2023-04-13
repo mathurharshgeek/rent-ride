@@ -143,8 +143,8 @@ app.get("/register/:role", (req, res) => {
 app.post("/register", registeration.postRegister(validator, bcrypt, UserModel));
 
 // Logout
-app.post("/logout", (req, res) => {
-  req.logout();
+app.post("/logout", async(req, res) => {
+  await req.logout();
   delete req.session.role;
   res.redirect("/");
 });
