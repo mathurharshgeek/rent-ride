@@ -79,8 +79,8 @@ app.use(flash());
 // require('./')
 
 var fileStorage = multer.diskStorage({
-  // destination: "./public/images/",
-  destination:'/tmp/my-uploads',
+  destination: "./public/images/",
+  // destination:'./tmp/my-uplods',
   filename: (req, file, cb) => {
     cb(
       null,
