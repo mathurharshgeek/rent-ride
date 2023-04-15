@@ -79,7 +79,8 @@ app.use(flash());
 // require('./')
 
 var fileStorage = multer.diskStorage({
-  destination: "./public/images/",
+  // destination: "./public/images/",
+  destination:'/tmp/my-uploads',
   filename: (req, file, cb) => {
     cb(
       null,
@@ -143,20 +144,13 @@ app.get("/register/:role", (req, res) => {
 app.post("/register", registeration.postRegister(validator, bcrypt, UserModel));
 
 // Logout
-// app.post("/logout", async(req, res) => {
-//   await req.logout();
-//   res.redirect("/");
-// });
-
-app.post('/logout', function(req, res, next) {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    delete req.session.role;
-    res.redirect('/');
-  });
+app.post("/logout", (req, res) => {
+     req.logout();
+  delete req.session.role;
+  res.redirect("/");
 });
-// Renter Routes
 
+// Renter Routes
 app.get(
   "/renter-profile",
   islogin,
