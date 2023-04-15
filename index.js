@@ -144,10 +144,18 @@ app.get("/register/:role", (req, res) => {
 app.post("/register", registeration.postRegister(validator, bcrypt, UserModel));
 
 // Logout
-app.post("/logout", (req, res) => {
-     req.logout();
+// app.post("/logout", (req, res) => {
+//      req.logout();
+//   delete req.session.role;
+//   res.redirect("/");
+// });
+app.post('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
   delete req.session.role;
-  res.redirect("/");
+
+    res.redirect('/');
+  });
 });
 
 // Renter Routes
