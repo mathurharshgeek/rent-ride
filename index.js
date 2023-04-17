@@ -32,6 +32,8 @@ const moment = require("moment");
 const app = express();
 const publicDir = path.join(__dirname, "/public");
 app.use(express.static(publicDir));
+app.use('/images', express.static(path.join(__dirname, "/public/images")));
+
 app.use(express.urlencoded({ extended: true })); // So we can access the form input values
 app.use(express.json());
 
@@ -79,7 +81,7 @@ app.use(flash());
 // require('./')
 
 var fileStorage = multer.diskStorage({
-  destination: "./public/images/",
+  destination: path.join(__dirname, "/public/images"),
   // destination:'./tmp/my-uplods',
   filename: (req, file, cb) => {
     cb(
